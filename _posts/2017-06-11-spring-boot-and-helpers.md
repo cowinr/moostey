@@ -12,11 +12,11 @@ The journey from Spring with XML to Spring Boot. A tale of writing less code...
 Intro
 =====
 
-I've been using Spring since version 1.2.6 way back in 2006, and I got very comfortable with configuring up my apps with XML. It just felt like the right thing to do, separating the config from the code and keeping it all in one neat place - a blueprint for my app. I could knock out an application.xml file pretty quick - no problem.
+I've been using Spring since version 1.2.6 way back in 2006, and I got very comfortable with configuring up my apps with XML. It just felt like the right thing to do, separating the config from the code and keeping it all in one neat place - a blueprint for my app. I could knock out an `application.xml` file pretty quick - no problem.
 
 Then along came the Java config mechanism... I've been fighting using it for years. As annotations crept in to Spring I slowly got used to losing that central application blueprint, and having to search through the codebase to see how it fit together. Tools help of course, but nothing beats looking at the code right?
 
-I finally gave up the XML habit when I had the chance to investigate Spring Boot.  Now I'm hooked. The Spring guys have done an _amazing_ job with auto-configuration such that what little config I have to declare myself seems insignificant and fits neatly into a bunch of config-specific `@Configuration` classes. With the main Spring Boot app at the top-level package, and domain-specific config in sub-packages, I have my central (ish) blueprint back in a terse, compile-time checked, fashion.
+I finally gave up the XML habit when I had the chance to investigate Spring Boot. Now I'm hooked. The Spring guys have done an _amazing_ job with auto-configuration such that what little config I have to declare myself seems insignificant and fits neatly into a bunch of config-specific `@Configuration` classes. With the main Spring Boot app at the top-level package, and domain-specific config in sub-packages, I have my central (ish) blueprint back in a terse, compile-time checked, fashion.
 
 The rest of this post documents what is needed to set up a Spring Boot app for a simple secured web application with a database at the back-end. I'll introduce a few 'friends' of Boot that helped along the way.
 
