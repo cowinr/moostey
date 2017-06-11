@@ -43,7 +43,7 @@ It's as easy as unpacking the zip from start.spring.io, loading it into an IDE a
 @SpringBootApplication
 public class MoosteySpringApplication {
   public static void main(String[] args) {
-    SpringApplication.run(...);
+    SpringApplication.run(MoosteySpringApplication.class, args);
   }
 }
 ```
