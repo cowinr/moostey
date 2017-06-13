@@ -39,14 +39,7 @@ I've included it in the Getting Started section as you will need to 'install' Lo
 
 It's as easy as unpacking the zip from start.spring.io, loading it into an IDE and running the main class:
 
-```java
-@SpringBootApplication
-public class MoosteySpringApplication {
-  public static void main(String[] args) {
-    SpringApplication.run(MoosteySpringApplication.class, args);
-  }
-}
-```
+<script src="https://gist.github.com/cowinr/e007cf9300156556ad2416758f42f81f.js"></script>
 
 ## What's Next?
 
