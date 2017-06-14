@@ -63,4 +63,11 @@ I could go on...
 Securing What We Have
 =====================
 
-Security integration is where Boot's web support really shines.
+[Security integration](http://docs.spring.io/spring-boot/docs/1.5.4.RELEASE/reference/htmlsingle/#boot-features-security) is where Boot's web support really shines:
+
+> If Spring Security is on the classpath then web applications will be secure by default with ‘basic’ authentication on all HTTP endpoints.
+> To add method-level security to a web application you can also add `@EnableGlobalMethodSecurity` with your desired settings.
+
+Erm, so no code example needed. However, adding custom config requires a little code:
+
+<script src="https://gist.github.com/cowinr/d05ccb6ff8fb1f488bdee055d7f28209.js"></script>
