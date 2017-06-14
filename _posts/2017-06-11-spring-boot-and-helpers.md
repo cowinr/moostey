@@ -52,4 +52,15 @@ I'm not writing a REST API, so I'm sticking with a simple `@Controller`:
 
 <script src="https://gist.github.com/cowinr/5bbb814d1e6bb8f307eca7ef25cccc7d.js"></script>
 
-Nothing much new for me here other than `@GetMapping` (and pals `@PostMapping`, `@PutMapping` etc.) which makes the code easier to grok if nothing else. However, it is easy to overlook a few things: I haven't written a `xxx-servlet.xml` config file; or a `web.xml`; I can choose from a growing number of optional method [args](http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-ann-arguments).
+Nothing much new for me here other than `@GetMapping` (and pals `@PostMapping`, `@PutMapping` etc.) which makes the code easier to grok if nothing else. However, it is easy to overlook a few things:
+- I haven't written a `xxx-servlet.xml` config file
+- or a `web.xml`
+- I can choose from a growing number of optional method [args](http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-ann-arguments).
+- No need to tell Spring where my page templates are
+
+I could go on...
+
+Securing What We Have
+=====================
+
+Security integration is where Boot's web support really shines.
