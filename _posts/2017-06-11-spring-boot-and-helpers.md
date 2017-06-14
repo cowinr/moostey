@@ -31,9 +31,9 @@ For reference I investigated Boot 1.5.3 with Java 8, Hibernate 5, Spring Data JP
 
 [Lombok](https://projectlombok.org/) is one of those jewels I stumbled across along the path to Boot. Watch the video on their website for a few minutes and you will see why I smiled - no more getters, setters, `toString()`, `equals()`, or `hashcode()` worries.
 
-There are concerns raised with using Lombok, and not everyone is happy to do so, so check with any teammates if you want to use it.
+There are [concerns](https://thoughtworks.github.io/p2/issue12/lombok/) [raised](https://stackoverflow.com/questions/3852091/is-it-safe-to-use-project-lombok) with using Lombok, and not everyone is happy to do so, so check with any teammates if you want to use it.
 
-I've included it in the Getting Started section as you will need to 'install' Lombok to be able to use it with your IDE.
+I've included it in the Getting Started section as you will need to '[install](https://projectlombok.org/setup/intellij)' Lombok to be able to use it with your IDE.
 
 ## Bootstrapping Boot
 
@@ -43,11 +43,13 @@ It's as easy as unpacking the zip from start.spring.io, loading it into an IDE a
 
 ## What's Next?
 
-Turning on the goodies one-by-one, starting at the front with a simple `@Controller`.
+Turning on the goodies one-by-one, starting at the front with a simple `@Controller`:
 
 Getting in Control
 ==================
 
 I'm not writing a REST API, so I'm sticking with a simple `@Controller`:
 
-Nothing much new for me here other than `@GetMapping` (and pals `@PostMapping`, `@PutMapping` etc.) which makes the code easier to grok if nothing else.
+<script src="https://gist.github.com/cowinr/5bbb814d1e6bb8f307eca7ef25cccc7d.js"></script>
+
+Nothing much new for me here other than `@GetMapping` (and pals `@PostMapping`, `@PutMapping` etc.) which makes the code easier to grok if nothing else. However, it is easy to overlook a few things: I haven't written a `xxx-servlet.xml` config file; or a `web.xml`; I can choose from a growing number of optional method [args](http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#mvc-ann-arguments).
