@@ -65,9 +65,45 @@ Securing What We Have
 
 [Security integration](http://docs.spring.io/spring-boot/docs/1.5.4.RELEASE/reference/htmlsingle/#boot-features-security) is where Boot's web support really shines:
 
-> If Spring Security is on the classpath then web applications will be secure by default with ‘basic’ authentication on all HTTP endpoints.
-> To add method-level security to a web application you can also add `@EnableGlobalMethodSecurity` with your desired settings.
+> If Spring Security is on the classpath then web applications will be secure by default with ‘basic’ authentication on all HTTP endpoints. To add method-level security to a web application you can also add `@EnableGlobalMethodSecurity` with your desired settings.
 
-Erm, so no code example needed. However, adding custom config requires a little code:
+Erm, so no code example needed.
+
+However, adding custom config requires a little code:
 
 <script src="https://gist.github.com/cowinr/d05ccb6ff8fb1f488bdee055d7f28209.js"></script>
+
+... again this saves an extraordinary amount of coding, giving us:
+- a flexible way of securing URLs
+- form based login
+- a simple user database
+- method level security
+- access to the security details within page templates
+
+Working With the Domain
+=======================
+
+The domain layer usually requires ORM mapping to a database using JPA. Spring has a long history of working with Hibernate out of the box -- with Spring Data JPA and Boot, the convenience is notched up a gear.
+
+Add `@EnableJpaRepositories` and you're off with implementation-less JPA repositories backed by Hibernate. What could be easier than defining a full CRUD + paging + sorting DAO with an expressive DSL for queries using:
+
+```java
+@Repository
+public interface PersonRepository
+  extends PagingAndSortingRepository<Person, Long>,
+  QueryDslPredicateExecutor<Person> {}
+```
+
+... jaw-droppingly concise.
+
+The domain Entity itself can be stripped of all boilerplate code using Lombok:
+
+```java
+@Entity
+@Getter @Setter @NoArgsConstructor
+public class Person {
+    @Id
+    private Long id;
+    private String name;
+}
+```
