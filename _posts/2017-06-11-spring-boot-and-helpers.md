@@ -202,3 +202,48 @@ Some simple examples, for reference:
 | (4) | `*{xxx}` for reading properties of `person` var |
 | (5) | [Security](http://www.thymeleaf.org/doc/articles/springsecurity.html) object use |
 
+My favourite (re-)discovery as part of this exercise though are [webjars](http://www.webjars.org/) which allow you to easily manage client-side JavaScript libraries in a Maven build:
+
+```xml
+<dependency>
+    <groupId>org.webjars</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.1.1</version>
+</dependency>
+```
+
+With this dependency in place a page can pull in the JQuery resources with a URL like `/webjars/jquery/3.1.1/jquery.min.js`. As a bonus the [webjars-locator](https://github.com/webjars/webjars-locator-core) library allows you define this URL without the version path part (`/webjars/jquery/jquery.min.js`), making upgrades simpler.
+
+Deployment
+==========
+
+One of the best parts about Boot? Deployment is as easy as running the `main()` method of the application, or `java -jar myapp-1.0.0.jar` for the packaged uber-jar, or `mvn spring-boot:run` using Maven. Take your pick, and have the app running using the embedded Tomcat server in seconds.
+
+References
+==========
+
+Some well-worn references from my journey...
+
+## Spring
+https://spring.io/docs/reference
+http://docs.spring.io/spring-boot/docs/1.5.2.RELEASE/reference/htmlsingle/
+http://docs.spring.io/spring-data/jpa/docs/1.11.1.RELEASE/reference/html/
+http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/
+http://docs.spring.io/spring-security/site/docs/4.2.2.RELEASE/reference/htmlsingle/
+https://github.com/spring-projects/spring-data-examples/tree/master/jpa
+
+## Thymeleaf
+http://www.thymeleaf.org/doc/articles/springsecurity.html
+http://www.thymeleaf.org/doc/tutorials/3.0/thymeleafspring.html
+https://ultraq.github.io/thymeleaf-layout-dialect/
+https://github.com/thymeleaf/thymeleaf-extras-java8time
+http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html
+
+# Others I used
+http://www.webjars.org/
+http://dbunit.sourceforge.net/
+http://fontawesome.io/icons/
+http://hibernate.org/orm/documentation/5.0/
+https://v4-alpha.getbootstrap.com/getting-started/introduction/
+https://jsoup.org/
+https://projectlombok.org/
