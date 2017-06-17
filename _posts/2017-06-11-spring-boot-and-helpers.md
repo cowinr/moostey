@@ -39,7 +39,14 @@ I've included it in the Getting Started section as you will need to '[install](h
 
 It's as easy as unpacking the zip from start.spring.io, loading it into an IDE and running the main class:
 
-<script src="https://gist.github.com/cowinr/e007cf9300156556ad2416758f42f81f.js"></script>
+```java
+@SpringBootApplication
+public class MoosteySpringApplication {
+  public static void main(String[] args) {
+    SpringApplication.run(MoosteySpringApplication.class, args);
+  }
+}
+```
 
 ## What's Next?
 
@@ -50,7 +57,13 @@ Getting in Control
 
 I'm not writing a REST API, so I'm sticking with a simple `@Controller`:
 
-<script src="https://gist.github.com/cowinr/5bbb814d1e6bb8f307eca7ef25cccc7d.js"></script>
+```java
+@Controller public class SimpleController {
+  @GetMapping("/") public String getRootPage() {
+    return "root";
+  }
+}
+```
 
 Nothing much new for me here other than `@GetMapping` (and pals `@PostMapping`, `@PutMapping` etc.) which makes the code easier to grok if nothing else. However, it is easy to overlook a few things:
 - I haven't written a `xxx-servlet.xml` config file
@@ -71,13 +84,33 @@ Erm, so no code example needed.
 
 However, adding custom config requires a little code:
 
-<script src="https://gist.github.com/cowinr/d05ccb6ff8fb1f488bdee055d7f28209.js"></script>
+```java
+@Configuration
+@EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
+public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+    @Override
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests()
+          .antMatchers("/", "/home").permitAll()
+          .anyRequest().authenticated()
+          .and().formLogin().loginPage("/login").permitAll()
+          .and().logout().permitAll();
+    }
+
+    @Autowired
+    public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+          .withUser("user").password("password").roles("USER");
+    }
+}
+```
 
 ... again this saves an extraordinary amount of coding, giving us:
 - a flexible way of securing URLs
 - form based login
 - a simple user database
-- method level security
+- method level security via `@EnableGlobalMethodSecurity`
 - access to the security details within page templates
 
 Working With the Domain
@@ -96,14 +129,76 @@ public interface PersonRepository
 
 ... jaw-droppingly concise.
 
+The powerful QueryDsl support can be used to assemble various reusable predicate expressions, such as:
+
+```java
+public static BooleanExpression isPending() {
+    return QPerson.person.nextReview.after(LocalDate.now());
+}
+```
+
+This could be combined with other expressions to filter queries, or used by itself, as below, to find a page of persons with a pending review date:
+
+```java
+Page<Person> persons = personRepo.findAll(isPending(), pageable);
+```
+
 The domain Entity itself can be stripped of all boilerplate code using Lombok:
 
 ```java
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Getter @Setter @NoArgsConstructor @Builder
 public class Person {
     @Id
     private Long id;
+    
     private String name;
+    
+    @DateTimeFormat(iso = ISO.DATE)
+    private LocalDate nextReview; // (1)
 }
 ```
+(1) Java 8 date/time support prior to JPA 2.2 requires jerry-rigging in Spring Boot via `Jsr310JpaConverters`.
+
+With the `@Builder` Lombok annotation you get a handy companion builder (inner) class, as below. This allows for a more fluid style of coding:
+
+```java
+Person p =
+    Person.builder()
+    .name("Doctor, The")
+    .nextReview(LocalDate.now().plusDays(7L))
+    .build();
+```
+
+Generating HTML
+===============
+
+There are a number of web template engines that work with Boot out-of-the-box -- Freemarker, Mustache, Groovy templates and JSPs. Unfortunately support for my favourite go-to engine, Velocity, has been dropped due to inactivity on the project.
+
+I'd never tried [Thymeleaf](http://www.thymeleaf.org/doc/tutorials/3.0/usingthymeleaf.html) before, so gave it a shot. The biggest advantages of Thymeleaf is being able to craft the HTML templates outside of a running container (so-called natural templates). However, I couldn't persuade my fellow developers to adopt it - they still prefer good *old* JSPs, despite the [obvious benefits](http://www.thymeleaf.org/doc/articles/thvsjsp.html) of Thymeleaf.
+
+Some simple examples, for reference:
+
+```html
+<p th:text="#{msgs.headers.name}">Name</p> <!-- (1) -->
+
+<table>
+  <tr th:each="prod: ${allProducts}"> <!-- (2) -->
+    <td th:text="${prod.name}">Oranges</td>
+    <td th:text="${#numbers.formatDecimal(prod.price, 1, 2)}">0.99</td> <!-- (3) -->
+  </tr>
+</table>
+
+<form th:object="${person}">
+    <input type="text" th:field="*{name}"> <!-- (4) -->
+</form>
+
+<span sec:authorize="hasAuthority('SOME_AUTH')">…</span> <!-- (5) -->
+```
+
+| (1) | Message from resource bundle for localisation |
+| (2) | Simple each loop over a list of Products |
+| (3) | Built-in formatting |
+| (4) | `*{xxx}` for reading properties of `person` var |
+| (5) | [Security](http://www.thymeleaf.org/doc/articles/springsecurity.html) object use |
+
