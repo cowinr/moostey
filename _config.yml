@@ -2,3 +2,4 @@ theme: jekyll-theme-cayman
 name: Moostey
 title: Moostey | Java | Web
 description: Java and Web blog
+markdown: kramdown
