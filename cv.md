@@ -9,7 +9,6 @@ Email: <a href="mailto:rich.cowin@gmail.com">rich.cowin@gmail.com</a>
 
 ## IT Manager / Senior Software Engineer
 
-## Personal Summary
 A multi-skilled IT professional with good all-round supervisory and technical expertise. Very capable with a proven ability to ensure the smooth running of IT systems and to provide services that will improve the efficiency and performance of a company.
 
 ## Skill Set
