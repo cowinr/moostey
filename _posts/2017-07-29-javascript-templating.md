@@ -155,7 +155,7 @@ And the Mustache templates themselves can be kept in `<script/>` blocks in HTML,
 
 <script id="panelTemplate" type="x-tmpl-mustache">
     <div class="panel">
-        <span>\{name}}</span>
+        <span>&#123;&#123;name}}</span>
         <ol>
             {{#foods}}
             <li id="\{{id}}">{{name}}</li>
