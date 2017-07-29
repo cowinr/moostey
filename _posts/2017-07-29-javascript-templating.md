@@ -36,7 +36,7 @@ File data.json:
 
 It's rather simplistic, but my assertion is that the JSON should be pretty much ready for rendering without too much processing. Data processing *should* be done server-side as far as possible.
 
-Context: String concatenation
+String concatenation
 ========
 
 This is really just here to provide a comparison
@@ -73,10 +73,10 @@ This is awkward, and I can't really advocate a situation in which you'd create H
 
 **Note:** I'm super-impressed with IntelliJ IDEA for managing to autocomplete the HTML tags in the middle of the apostrophe and concatenation soup.
 
-Context: JQuery
+JQuery
 ========
 
-With JQuery 3.2.1...
+Where JQuery (I used 3.2.1) is already available.
 
 ```javascript
         $.getJSON('../data.json', function (json) {
@@ -116,3 +116,51 @@ Note that:
 * Best practice? Closing the HTML tags in `$('<html/>')`. Not necessary, but conveys intention better.
 
 Still it's fairly verbose, and not strictly a templating mechanism!
+
+Mustache
+========
+
+Finally :) a purpose-built templating mechanism. Mustache is one of the more popular libraries, with various language implementations, including Java and JavaScript. Here I've used mustache-2.3.0.js.
+
+```javascript
+<script>
+
+    $(function () {
+
+        var panelTemplate = $('#panelTemplate').html();
+        Mustache.parse(panelTemplate);
+
+        var messageTemplate = $('#messageTemplate').html();
+        Mustache.parse(messageTemplate);
+        var s = Mustache.render(messageTemplate, {
+            "time": (new Date()).toLocaleTimeString("en-GB")
+        });
+
+        // Load data
+        $.getJSON('../data.json', function (json) {
+
+            $('#section').html(Mustache.render(panelTemplate, json));
+            $('.panel').click(function () {
+                $(this).append(s);
+                $(this).toggleClass("test");
+            });
+
+        });
+    });
+</script>
+
+<script id="messageTemplate" type="x-tmpl-mustache">
+    <p style="margin: 0;">I was rendered at {{time}}</p>
+</script>
+
+<script id="panelTemplate" type="x-tmpl-mustache">
+    <div class="panel">
+        <span>{{name}}</span>
+        <ol>
+            {{#foods}}
+            <li id="{{id}}">{{name}}</li>
+            {{/foods}}
+        </ol>
+    </div>
+</script>
+```
