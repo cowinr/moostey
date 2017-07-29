@@ -7,9 +7,9 @@ date: 2017-07-29
 Overview
 ========
 
-A Collection of useful JavaScript templating for various scenarios. I'm expecting the list to grow as new frameworks and/or techniques come along.
+A Collection of useful JavaScript templating techniques for various scenarios. I'm expecting the list to grow as new frameworks and/or techniques come along.
 
-The objective is to find an ideal mechanism for creating HTML on the fly and bind JSON data to it. The ideal mechanism is likely to vary based on the context, e.g. if the page or project already includes a JavaScript library, or how complex the HTML fragment or JSON data is.
+The objective is to find an ideal mechanism for creating HTML on the fly and bind JSON data to it. The *ideal* mechanism is likely to vary based on the context, e.g. if the page or project already includes a JavaScript library, or how complex the HTML fragment or JSON data is.
 
 The example JSON I've used for each case is:
 
@@ -39,15 +39,13 @@ It's rather simplistic, but my assertion is that the JSON should be pretty much 
 String concatenation
 ========
 
-This is really just here to provide a comparison
+This is really just here to provide a comparison to the later examples.
 
 ```javascript
     $(function () {
-        console.log("Loaded page...");
 
         // Load data
         $.getJSON('../data.json', function (json) {
-            console.log(json);
 
             var html = '<div class="panel"><span>' + json.name + '</span><ol>';
 
@@ -79,6 +77,7 @@ JQuery
 Where JQuery (I used 3.2.1) is already available.
 
 ```javascript
+    $(function () {
         $.getJSON('../data.json', function (json) {
 
             var $div = $('<div/>', {
@@ -124,7 +123,6 @@ Finally :) a purpose-built templating mechanism. Mustache is one of the more pop
 
 ```javascript
 <script>
-
     $(function () {
 
         var panelTemplate = $('#panelTemplate').html();
@@ -148,14 +146,18 @@ Finally :) a purpose-built templating mechanism. Mustache is one of the more pop
         });
     });
 </script>
+```
 
+And the Mustache templates themselves can be kept in `<script/>` blocks in HTML, or as is shown in the next section, they can be loaded via AJAX calls.
+
+```html
 <script id="messageTemplate" type="x-tmpl-mustache">
     <p style="margin: 0;">I was rendered at {{time}}</p>
 </script>
 
 <script id="panelTemplate" type="x-tmpl-mustache">
     <div class="panel">
-        <span>{{name}}</span>
+        <span>\{\{name\}\}</span>
         <ol>
             {{#foods}}
             <li id="{{id}}">{{name}}</li>
@@ -163,4 +165,58 @@ Finally :) a purpose-built templating mechanism. Mustache is one of the more pop
         </ol>
     </div>
 </script>
+```
+
+Mustache with templates loaded via AJAX
+-----
+
+As mentioned above the Mustache templates can be loaded dynamically along with the JSON data. The example below shows this in action, with a neat JQuery function `.with()` ensuring that both the data and template are loaded before rendering begins:
+
+```javascript
+    $(function () {
+
+        var messageTemplate = $('#messageTemplate').html();
+        Mustache.parse(messageTemplate);
+        var s = Mustache.render(messageTemplate, {
+            "time": (new Date()).toLocaleTimeString("en-GB")
+        });
+
+        $.when(
+            // Load template
+            $.ajax({
+                url: "panelTemplate.mustache",
+                dataType: "text"
+            }),
+            // Load data
+            $.getJSON('../data.json')
+        ).done(function (panelTemplate, json) {
+            // Parse and Compile Mustache template
+            Mustache.parse(panelTemplate[0]);
+
+            // Merge template with data and write to #section
+            $('#section').html(Mustache.render(panelTemplate[0], json[0]));
+
+            // Some simple jQuery event handling
+            $('.panel').click(function () {
+                $(this).append(s);
+                $(this).toggleClass("test");
+            });
+        }).fail(function () {
+            $('#section').text('Template and/or data loading failed!');
+        });
+
+    });
+```
+
+And the template file `panelTemplate.mustache`:
+
+```html
+<div class="panel">
+    <span>Name: {{name}}</span>
+    <ol>
+        {{#foods}}
+        <li id="{{id}}">Food: {{name}}</li>
+        {{/foods}}
+    </ol>
+</div>
 ```
