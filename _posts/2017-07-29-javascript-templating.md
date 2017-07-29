@@ -122,7 +122,6 @@ Mustache
 Finally :) a purpose-built templating mechanism. Mustache is one of the more popular libraries, with various language implementations, including Java and JavaScript. Here I've used mustache-2.3.0.js.
 
 ```javascript
-<script>
     $(function () {
 
         var panelTemplate = $('#panelTemplate').html();
@@ -145,7 +144,6 @@ Finally :) a purpose-built templating mechanism. Mustache is one of the more pop
 
         });
     });
-</script>
 ```
 
 And the Mustache templates themselves can be kept in `<script/>` blocks in HTML, or as is shown in the next section, they can be loaded via AJAX calls.
@@ -157,7 +155,7 @@ And the Mustache templates themselves can be kept in `<script/>` blocks in HTML,
 
 <script id="panelTemplate" type="x-tmpl-mustache">
     <div class="panel">
-        <span>\{\{name\}\}</span>
+        <span>\u007b;name}}</span>
         <ol>
             {{#foods}}
             <li id="{{id}}">{{name}}</li>
