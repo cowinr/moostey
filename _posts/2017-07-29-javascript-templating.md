@@ -69,7 +69,7 @@ This is really just here to provide a comparison to the later examples. JQuery i
 
 This is awkward, and I can't really advocate a situation in which you'd create HTML via string concatenation like this.
 
-**Note:** I'm super-impressed with IntelliJ IDEA for managing to autocomplete the HTML tags in the middle of the apostrophe and concatenation soup.
+**Note:** I'm super-impressed with [IntelliJ IDEA](https://www.jetbrains.com/idea/) for managing to autocomplete the HTML tags in the middle of the apostrophe and concatenation soup.
 
 JQuery
 ======
