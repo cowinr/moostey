@@ -151,15 +151,15 @@ And the Mustache templates themselves can be kept in `<script/>` blocks in HTML.
 {% raw %}
 ```html
 <script id="messageTemplate" type="x-tmpl-mustache">
-    <p style="margin: 0;">I was rendered at \{\{time}}</p>
+    <p style="margin: 0;">I was rendered at {{time}}</p>
 </script>
 
 <script id="panelTemplate" type="x-tmpl-mustache">
     <div class="panel">
-        <span>\{{name}}</span>
+        <span>{{name}}</span>
         <ol>
             {{#foods}}
-            <li id="\{{id}}">{{name}}</li>
+            <li id="{{id}}">{{name}}</li>
             {{/foods}}
         </ol>
     </div>
@@ -176,12 +176,6 @@ As mentioned above the Mustache templates can be loaded dynamically along with t
 
 ```javascript
     $(function () {
-
-        var messageTemplate = $('#messageTemplate').html();
-        Mustache.parse(messageTemplate);
-        var s = Mustache.render(messageTemplate, {
-            "time": (new Date()).toLocaleTimeString("en-GB")
-        });
 
         $.when(
             // Load template
@@ -200,7 +194,6 @@ As mentioned above the Mustache templates can be loaded dynamically along with t
 
             // Some simple jQuery event handling
             $('.panel').click(function () {
-                $(this).append(s);
                 $(this).toggleClass("test");
             });
         }).fail(function () {
@@ -211,19 +204,6 @@ As mentioned above the Mustache templates can be loaded dynamically along with t
 ```
 
 And the template file `panelTemplate.mustache`:
-
-{% raw %}
-```mustache
-<div class="panel">
-    <span>Name: {{name}}</span>
-    <ol>
-        {{#foods}}
-        <li id="{{id}}">Food: {{name}}</li>
-        {{/foods}}
-    </ol>
-</div>
-```
-{% endraw %}
 
 {% raw %}
 ```handlebars
@@ -237,3 +217,62 @@ And the template file `panelTemplate.mustache`:
 </div>
 ```
 {% endraw %}
+
+**Note:** A Note on partials: TODO
+
+Alternatives
+------------
+
+There are a number of alternatives templating frameworks out there, most notably Handlebars, which is very similar to Mustache. I prefer Mustache as it favours keeping things simple, minimising the amount of logic kept in the templates themselves.
+
+ES6 Template Literals
+=====================
+
+ES6 has built in support for simple templating within string creation.
+
+```javascript
+    $(function () {
+
+        // Load data
+        $.getJSON('../data.json', function (json) {
+
+            let html =
+                `<div class="panel">
+                    <span>${json.name}</span>
+                    <ol>`;
+
+            $.each(json.foods, function (index, food) {
+                html += `<li id="${food.id}">${food.name}</li>`;
+            });
+
+            html +=
+                    `</ol>
+                 </div>`;
+
+            $('#section').html(html);
+
+            // Some simple jQuery event handling
+            $('.panel').click(function () {
+                $(this).append(`<p style="margin: 0">I was rendered at ${(new Date()).toLocaleTimeString('en-GB')}</p>`);
+                var myMargin = 0;
+                let str = `
+<div>
+    <p style="margin: ${myMargin}">I was rendered at ${(new Date()).toLocaleTimeString('en-GB')}</p>
+</div>
+`;
+                $(this).toggleClass("test");
+            });
+
+        });
+    });
+```
+
+Without the list iteration in the middle of the string, this would have been a neat solution. Unfortunatley string template literals don't really help if *any* logic is required in the template.
+
+Summary
+=======
+
+| Technique | Useful for | Avoid |
+| String concatenation | When you have no libraries to play with! You've forgotten how to use JQuery (or everything else). | Under any other circumstances |
+| JQuery | When you feel like a programmer. \nKeeping event handling logic next to your HTML creation. Complex data processing on the client. | If anyone on the team is not familiar with JQuery or programming (e.g. designer) |
+| Mustache | | |
