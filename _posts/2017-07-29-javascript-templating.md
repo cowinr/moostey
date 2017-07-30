@@ -36,8 +36,8 @@ File data.json:
 
 It's rather simplistic, but my assertion is that the JSON should be pretty much ready for rendering without too much processing. Data processing *should* be done server-side as far as possible.
 
-String concatenation
-========
+String Concatenation
+====================
 
 This is really just here to provide a comparison to the later examples.
 
@@ -72,7 +72,7 @@ This is awkward, and I can't really advocate a situation in which you'd create H
 **Note:** I'm super-impressed with IntelliJ IDEA for managing to autocomplete the HTML tags in the middle of the apostrophe and concatenation soup.
 
 JQuery
-========
+======
 
 Where JQuery (I used 3.2.1) is already available.
 
@@ -170,7 +170,7 @@ And the Mustache templates themselves can be kept in `<script/>` blocks in HTML.
 Alternatively the templates can be loaded via AJAX calls, as per the following section.
 
 Mustache with templates loaded via AJAX
------
+---------------------------------------
 
 As mentioned above the Mustache templates can be loaded dynamically along with the JSON data. The example below shows this in action, with a neat JQuery function `.with()` ensuring that both the data and template are loaded before rendering begins:
 
@@ -237,9 +237,9 @@ ES6 has built in support for simple templating within string creation.
         $.getJSON('../data.json', function (json) {
 
             let html =
-                ``<div class="panel">
+                `<div class="panel">
                     <span>${json.name}</span>
-                    <ol>``;
+                    <ol>`;
 
             $.each(json.foods, function (index, food) {
                 html += `<li id="${food.id}">${food.name}</li>`;
@@ -273,10 +273,7 @@ Summary
 =======
 
 | Technique | Useful for | Avoid |
-| String concatenation | When you have no libraries to play with! You've forgotten how to use JQuery (or everything else). | Under any other circumstances |
-| JQuery |
-* When you feel like a programmer. 
-* Keeping event handling logic next to your HTML creation. 
-* Complex data processing on the client. 
-| If anyone on the team is not familiar with JQuery or programming (e.g. designer) |
-| Mustache | Large complex templates. Reuse of templates across multiple pages. | May be overkill for smaller templates. |
+| String concatenation | When you have no libraries to play with! <br/>You've forgotten how to use JQuery (or everything else). | Under any other circumstances. |
+| JQuery | When you feel like a programmer. <br/>Keeping event handling logic next to your HTML creation. <br/>Complex data processing on the client. | If anyone on the team is not familiar with JQuery or programming (e.g. designer) |
+| Mustache | Large complex templates. <br/>Need to reuse templates across multiple pages. <br/>Non programmers need to create templates. | May be overkill for smaller templates. |
+| ES6 templates literals | Simple HTML creation only. <br/>When ES6 is available. | There is a need for logic in the template. |
