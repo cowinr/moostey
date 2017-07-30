@@ -148,7 +148,8 @@ Finally :) a purpose-built templating mechanism. Mustache is one of the more pop
 
 And the Mustache templates themselves can be kept in `<script/>` blocks in HTML.
 
-```
+{% raw %}
+```html
 <script id="messageTemplate" type="x-tmpl-mustache">
     <p style="margin: 0;">I was rendered at \{\{time}}</p>
 </script>
@@ -164,6 +165,8 @@ And the Mustache templates themselves can be kept in `<script/>` blocks in HTML.
     </div>
 </script>
 ```
+{% endraw %}
+
 Alternatively the templates can be loaded via AJAX calls, as per the following section.
 
 Mustache with templates loaded via AJAX
@@ -209,7 +212,8 @@ As mentioned above the Mustache templates can be loaded dynamically along with t
 
 And the template file `panelTemplate.mustache`:
 
-```text
+{% raw %}
+```mustache
 <div class="panel">
     <span>Name: {{name}}</span>
     <ol>
@@ -219,3 +223,17 @@ And the template file `panelTemplate.mustache`:
     </ol>
 </div>
 ```
+{% endraw %}
+
+{% raw %}
+```handlebars
+<div class="panel">
+    <span>Name: {{name}}</span>
+    <ol>
+        {{#foods}}
+        <li id="{{id}}">Food: {{name}}</li>
+        {{/foods}}
+    </ol>
+</div>
+```
+{% endraw %}
