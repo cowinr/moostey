@@ -273,6 +273,7 @@ Summary
 =======
 
 | Technique | Useful for | Avoid |
+|---------|
 | String concatenation | When you have no libraries to play with! <br/>You've forgotten how to use JQuery (or everything else). | Under any other circumstances. |
 | JQuery | When you feel like a programmer. <br/>Keeping event handling logic next to your HTML creation. <br/>Complex data processing on the client. | If anyone on the team is not familiar with JQuery or programming (e.g. designer) |
 | Mustache | Large complex templates. <br/>Need to reuse templates across multiple pages. <br/>Non programmers need to create templates. | May be overkill for smaller templates. |
