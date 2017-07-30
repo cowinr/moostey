@@ -39,7 +39,7 @@ It's rather simplistic, but my assertion is that the JSON should be pretty much 
 String Concatenation
 ====================
 
-This is really just here to provide a comparison to the later examples.
+This is really just here to provide a comparison to the later examples. JQuery is used only to attach event handling.
 
 ```javascript
     $(function () {
@@ -74,7 +74,7 @@ This is awkward, and I can't really advocate a situation in which you'd create H
 JQuery
 ======
 
-Where JQuery (I used 3.2.1) is already available.
+Where [JQuery](http://code.jquery.com/jquery-3.2.1.min.js) (I used 3.2.1) is already available.
 
 ```javascript
     $(function () {
@@ -119,7 +119,7 @@ Still it's fairly verbose, and not strictly a templating mechanism!
 Mustache
 ========
 
-Finally :) a purpose-built templating mechanism. Mustache is one of the more popular libraries, with various language implementations, including Java and JavaScript. Here I've used mustache-2.3.0.js.
+Finally :) a purpose-built templating mechanism. [Mustache](http://mustache.github.io/) is one of the more popular libraries, with various language implementations, including [Java](https://github.com/spullara/mustache.java) and [JavaScript](https://github.com/janl/mustache.js). Here I've used [mustache-2.3.0.js](https://cdnjs.cloudflare.com/ajax/libs/mustache.js/2.3.0/mustache.min.js).
 
 ```javascript
     $(function () {
@@ -172,7 +172,7 @@ Alternatively the templates can be loaded via AJAX calls, as per the following s
 Mustache with templates loaded via AJAX
 ---------------------------------------
 
-As mentioned above the Mustache templates can be loaded dynamically along with the JSON data. The example below shows this in action, with a neat JQuery function `.with()` ensuring that both the data and template are loaded before rendering begins:
+As mentioned above the Mustache templates can be loaded dynamically along with the JSON data. The example below shows this in action, with the neat JQuery function chain `.when(...).done(...).fail(...)` ensuring that both the data and template are loaded before rendering begins:
 
 ```javascript
     $(function () {
@@ -218,17 +218,23 @@ And the template file `panelTemplate.mustache`:
 ```
 {% endraw %}
 
-**Note:** A Note on partials: TODO
+**Note:** A Note on partials:
+Mustache supports partials, which can be used to embed template fragments inside other templates. This makes it ideal for complex templates that can be logically split.
+
+For example:
+```
+TODO
+```
 
 Alternatives
 ------------
 
-There are a number of alternatives templating frameworks out there, most notably Handlebars, which is very similar to Mustache. I prefer Mustache as it favours keeping things simple, minimising the amount of logic kept in the templates themselves.
+There are a number of alternatives templating frameworks out there, most notably [Handlebars](http://handlebarsjs.com/), which is syntactically very similar to Mustache. I prefer Mustache as it favours keeping things simple, minimising the amount of logic kept in the templates themselves.
 
 ES6 Template Literals
 =====================
 
-ES6 has built in support for simple templating within string creation.
+ES6 has built in support for simple templating within string creation via [template literals](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Template_literals).
 
 ```javascript
     $(function () {
