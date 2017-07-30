@@ -218,6 +218,14 @@ And the template file `panelTemplate.mustache`:
 ```
 {% endraw %}
 
+{% highlight html %}
+<html><h1>H1</h1></html>
+{% endhighlight %}
+
+```html
+<html><h1>H1</h1></html>
+```
+
 **Note:** A Note on partials: TODO
 
 Alternatives
@@ -274,5 +282,9 @@ Summary
 
 | Technique | Useful for | Avoid |
 | String concatenation | When you have no libraries to play with! You've forgotten how to use JQuery (or everything else). | Under any other circumstances |
-| JQuery | When you feel like a programmer. \nKeeping event handling logic next to your HTML creation. Complex data processing on the client. | If anyone on the team is not familiar with JQuery or programming (e.g. designer) |
-| Mustache | | |
+| JQuery |
+* When you feel like a programmer. 
+* Keeping event handling logic next to your HTML creation. 
+* Complex data processing on the client. 
+| If anyone on the team is not familiar with JQuery or programming (e.g. designer) |
+| Mustache | Large complex templates. Reuse of templates across multiple pages. | May be overkill for smaller templates. |
