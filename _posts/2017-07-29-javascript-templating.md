@@ -149,7 +149,7 @@ Finally :) a purpose-built templating mechanism. [Mustache](http://mustache.gith
 And the Mustache templates themselves can be kept in `<script/>` blocks in HTML.
 
 {% raw %}
-```html
+```handlebars
 <script id="messageTemplate" type="x-tmpl-mustache">
     <p style="margin: 0;">I was rendered at {{time}}</p>
 </script>
