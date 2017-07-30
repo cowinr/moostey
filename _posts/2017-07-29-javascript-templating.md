@@ -150,12 +150,12 @@ And the Mustache templates themselves can be kept in `<script/>` blocks in HTML.
 
 ```
 <script id="messageTemplate" type="x-tmpl-mustache">
-    <p style="margin: 0;">I was rendered at {{time}}</p>
+    <p style="margin: 0;">I was rendered at \{\{time}}</p>
 </script>
 
 <script id="panelTemplate" type="x-tmpl-mustache">
     <div class="panel">
-        <span>{{name}}</span>
+        <span>\{{name}}</span>
         <ol>
             {{#foods}}
             <li id="\{{id}}">{{name}}</li>
