@@ -218,14 +218,6 @@ And the template file `panelTemplate.mustache`:
 ```
 {% endraw %}
 
-{% highlight html %}
-<html><h1>H1</h1></html>
-{% endhighlight %}
-
-```html
-<html><h1>H1</h1></html>
-```
-
 **Note:** A Note on partials: TODO
 
 Alternatives
@@ -245,9 +237,9 @@ ES6 has built in support for simple templating within string creation.
         $.getJSON('../data.json', function (json) {
 
             let html =
-                `<div class="panel">
+                ``<div class="panel">
                     <span>${json.name}</span>
-                    <ol>`;
+                    <ol>``;
 
             $.each(json.foods, function (index, food) {
                 html += `<li id="${food.id}">${food.name}</li>`;
