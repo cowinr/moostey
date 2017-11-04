@@ -13,9 +13,9 @@ A multi-skilled IT professional with good all-round supervisory and technical ex
 
 ## Skill Set
 * All areas of Java-based development for over 20 years. Including many popular libraries across a broad range of problem domains. 
-* Extensive knowledge of the Spring Framework (12 years) and Spring MVC, including the latest Spring Boot platform.
-* Experience of many web development technologies -- most recently HTML5, JQuery, Bootstrap 4, CSS/Less.
-* Worked mostly with Oracle databases, using JDBC/SQL, JDO, and JPA with Hibernate for Object-relational mapping.
+* Extensive knowledge of the Spring Framework (10+ years) and Spring MVC, including the latest Spring Boot platform.
+* Experience of many web development technologies -- HTML5, JQuery, Bootstrap 4, CSS, ES6.
+* Worked mostly with Oracle databases, using JDBC/SQL, and JPA with Hibernate for Object-relational mapping.
 * Good grasp of the utility of UML for design and documentation.
 * Confident giving presentations (technical or otherwise) to staff at all levels up to Senior Management.
 * UI / UX Design
