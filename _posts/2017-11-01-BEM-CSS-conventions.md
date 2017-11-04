@@ -9,11 +9,13 @@ Typically CSS is treated as a second class citizen, with little effort on organi
  
 There are a few naming schemes to choose from OOCSS, SMACSS, SUITCSS, Atomic, but my favourite so far is BEM.
  
- # BEM
+# BEM
 There are 3 parts to BEM - Blocks, Elements and Modifiers (hence the name).
  
 **Block** – Standalone component that is meaningful on its own, e.g. a status badge, such as the Bootstrap badge.
+
 **Element** – A part of a block component that has no standalone meaning and is semantically tied to its block, e.g. an input field in a form.
+
 **Modifier** – A flag on a block or element. Used to change appearance or behaviour, e.g. Bootstrap button sizing via `btn-sm`.
  
 Below is a simple example of the convention for a made-up badge component:
@@ -65,8 +67,10 @@ A Modifier class is prefixed with `<namespace>--` E.g. `badge--danger`.
 A scheme such as this is better than none at least!
  
 Perhaps the strongest case for using any CSS convention based on namespacing is that it unambiguously defines which CSS belongs to a piece of user interface and so using it gives answers to questions "Can I remove this piece of CSS?" and "What happens and which interface parts will be affected if I change this piece of CSS?".
- 
-[BEM naming rules](http://getbem.com/naming/) | [FAQ](http://getbem.com/faq/)
+
+## BEM Resources
+* [BEM naming rules](http://getbem.com/naming/)
+* [FAQ](http://getbem.com/faq/)
 
 # Alternative – Bootstrap-esque BEM
  
