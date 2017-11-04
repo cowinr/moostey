@@ -17,7 +17,7 @@ Also useful is regexplanet.com which has a Java-specific page, giving match resu
 | as a Java string | `"charge(?!s?\\s?waived).*"` |
 | Replacement | |
 | groupCount() | 0 |
-<br/>
+
 | Test | Target String | matches() | find() |
 |-----|
 | 1 | charge | Yes | Yes |
