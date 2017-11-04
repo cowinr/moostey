@@ -18,8 +18,8 @@ Also useful is regexplanet.com which has a Java-specific page, giving match resu
 | Replacement | |
 | groupCount() | 0 |
 
-| Test | Target String | matches() | replaceFirst() | replaceAll() | lookingAt() | find() | n [start(n),end(n)] group(n) |
+| Test | Target String | matches() | find() |
 |-----|
-| 1 | charge | Yes | Yes | Yes | 0: [0,6] charge |
-| 2 | Charges are cool | Yes | Yes | Yes | 0: [0,16] Charges are cool |
-| 3 | Charges waived | No | Charges waived | Charges waived | No | No |
+| 1 | charge | Yes | Yes |
+| 2 | Charges are cool | Yes | Yes |
+| 3 | Charges waived | No | No |
