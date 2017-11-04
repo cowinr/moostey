@@ -23,9 +23,18 @@ Below is a simple example of the convention for a made-up badge component:
 Example badges in HTML:
 
 ```html
-  <span class="badge badge--info"><span class="badge__count">3</span><span class="badge__text">new messages</span></span>
-  <span class="badge badge--danger"><span class="badge__count">7</span><span class="badge__text">deadly sins</span></span>
-  <span class="badge"><span class="badge__count">99</span><span class="badge__text">red balloons</span></span>
+<span class="badge badge--info">
+ <span class="badge__count">3</span>
+ <span class="badge__text">new messages</span>
+</span>
+<span class="badge badge--danger">
+ <span class="badge__count">7</span>
+ <span class="badge__text">deadly sins</span>
+</span>
+<span class="badge">
+ <span class="badge__count">99</span>
+ <span class="badge__text">red balloons</span>
+</span>
 ``` 
  
 Example CSS:
