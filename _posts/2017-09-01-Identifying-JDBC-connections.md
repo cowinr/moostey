@@ -24,4 +24,7 @@ Et voila, no more "JDBC Thin Client"...
 ```sql
 SELECT SCHEMANAME, STATUS, OSUSER, PROGRAM FROM V$SESSION
 ```
+
+| SCHEMANAME | STATUS | OSUSER | PROGRAM |
+|----|
 | TEST | INACTIVE | username | tomcat_server_name |
