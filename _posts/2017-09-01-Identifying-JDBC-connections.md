@@ -13,7 +13,7 @@ With Tomcat connection pools you can use `connectionProperties` to set the `V$SE
 ```xml    
 <Resource name="my_connection"
       username="username"
-      <!-- Other attributes -->
+      Other attributes here
       connectionProperties="v$session.program=tomcat_server_name"
       validationQuery="SELECT 1 FROM DUAL"
 />
