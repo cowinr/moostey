@@ -45,7 +45,7 @@ After placing a file, e.g. `test.csv`, in `/home/username/Oracle` you need to ma
   );
 
   CREATE PUBLIC SYNONYM TEST_CSV FOR TEST_CSV;
-  GRANT SELECT ON TEST_CSV TO OPS$u0886;
+  GRANT SELECT ON TEST_CSV TO MY_DB_USER;
 ``` 
  
 The table and columns can be named whatever you want, and are mapped to the columns in the CSV file in order.
