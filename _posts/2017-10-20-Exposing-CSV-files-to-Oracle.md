@@ -18,9 +18,6 @@ Typically there are few users that have the ability to create a `DIRECTORY`, so 
 After placing a file, e.g. `test.csv`, in `/home/username/Oracle` you need to map it to an external `TABLE`:
  
 ```sql 
-  EXEC bob_build.drop_user_table('TEST_CSV');
-  EXEC bob_build.drop_public_synonym('TEST_CSV' );
-
   CREATE TABLE TEST_CSV
   (
     Broker           VARCHAR2(100),
