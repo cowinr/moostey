@@ -65,13 +65,13 @@ University Research Fellow — 1998-1999
  
 PhD Nuclear Physics — 1994-1998
 * University Prize for Outstanding PhD Research 1997
-* [Papers](http://www.sciencedirect.com/science/article/pii/S0168900297009741) [published](http://www.sciencedirect.com/science/article/pii/S0168900298011759) in International Physics Journals
+* Papers published in International Physics Journals
  
 1st BSc Hons Physics — 1991-1994
 
 ## Volunteer Experience
 ### Career Ready
-Mentor - Dec 2014 – Dec 2016
+Mentor — 2014–2016
 
 Career Ready is a UK wide charity linking employers with schools and colleges to open up the world of work to young people.
 
