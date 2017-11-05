@@ -68,3 +68,11 @@ PhD Nuclear Physics — 1994-1998
 * [Papers](http://www.sciencedirect.com/science/article/pii/S0168900297009741) [published](http://www.sciencedirect.com/science/article/pii/S0168900298011759) in International Physics Journals
  
 1st BSc Hons Physics — 1991-1994
+
+## Volunteer Experience
+### Career Ready
+Mentor - Dec 2014 – Dec 2016
+
+Career Ready is a UK wide charity linking employers with schools and colleges to open up the world of work to young people.
+
+I've personally mentored 2 A-level students, steering them through the first of their A-level years, and providing close support during a 4 week internship within my Development Team.
