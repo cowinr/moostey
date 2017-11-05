@@ -31,7 +31,7 @@ A multi-skilled IT professional with good all-round supervisory and technical ex
 ### Hansard Global Plc, Isle of Man
 IT Manager & Senior Software Engineer, 2000-Present
 
-I manage the team responsible for building our secure, interactive web applications for Independent Financial Advisers and policyholders around the globe.
+I manage the team responsible for building our award-winning, interactive web applications for Independent Financial Advisers and policyholders around the globe.
  
 I participate in all areas of software development from requirements gathering, through design & development, to customer care.
  
@@ -45,7 +45,7 @@ Duties:
 * Software Evaluation and Procurement.
 * Systems Administrator - JIRA, Confluence, Tomcat, Pivotal tc Server.
 * Key Systems Risk and Performance analysis and control.
-Direct reporting to the IT Director & Chief Operating Officer.
+* Direct reporting to the IT Director & Chief Operating Officer.
 * Recommending and implementing improvements and efficiencies across the group.
 * Excellent time management & communication skills.
 * Strong IT, commercial, planning and budgeting skills.
