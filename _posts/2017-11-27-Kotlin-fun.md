@@ -43,7 +43,7 @@ A simple CustomerService interface looks quite Java-like, except that types are 
 
 ## Implementation
 
-Kotlin can use all the usual Java libraries, such as Spring’s JDBC support for implementing the CustomerService:
+Kotlin can use all the usual Java libraries, such as Spring’s JDBC support for implementing the `CustomerService`:
 
 ```kotlin
   @Service
@@ -58,11 +58,11 @@ Kotlin can use all the usual Java libraries, such as Spring’s JDBC support for
   }
 ```
  
-As you can see, lambdas are a key part of the language. The part in curly braces is not the method body, but a lambda implementing the RowCallbackHandler functional interface. The JdbcTemplate is auto-wired into the class constructor.
+As you can see, lambdas are a key part of the language. The part in curly braces is not the method body, but a lambda implementing the `RowCallbackHandler` functional interface. The `JdbcTemplate` is auto-wired into the class constructor.
 
 # REST Controller
 
-A RestController is similarly terse:
+A `RestController` is similarly terse:
 
 ```kotlin
   @RestController
@@ -108,7 +108,7 @@ For a bit more fun, the application can be seeded with a few Customers by alteri
   }
 ```
 
-The beans `{ bean { } bean { } … }` stuff is declaring Spring beans using a Kotlin-specific DSL. On start-up it creates 3 Customers, and prints them to the console. Wiring up the SpringTransactionManager simply ensures that they are committed to the database.
+The beans `{ bean { } bean { } … }` stuff is declaring Spring beans using a Kotlin-specific DSL. On start-up it creates 3 Customers, and prints them to the console. Wiring up the `SpringTransactionManager` simply ensures that they are committed to the database.
 
 It should be noted that all this can reside in a single file, say `JdbcApplication.kt` with a `@SpringBootApplication` annotation to perform all the auto-configuration, including set up of an H2 in-memory database:
 
@@ -169,21 +169,12 @@ A `pom.xml` file for reference:
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
-        </dependency>
-        <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-stdlib-jre8</artifactId>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.kotlin</groupId>
             <artifactId>kotlin-reflect</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.jetbrains.exposed</groupId>
-            <artifactId>exposed</artifactId>
-            <version>0.8.9</version>
         </dependency>
         <dependency>
             <groupId>org.jetbrains.exposed</groupId>
